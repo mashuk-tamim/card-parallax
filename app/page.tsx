@@ -1,34 +1,33 @@
 "use client";
-import Image from "next/image";
 import { projects } from "@/app/components/data";
 import Card from "@/app/components/Card/page";
-import { motion, useScroll, motionValue } from "framer-motion";
+import { useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 
-export default function Home() {
+const Home = () => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: container,
 		offset: ["start start", "end end"],
 	});
 	const projectLength = projects.length;
-	// console.log(projectLength);
-	// console.log(projects);
+
 	useEffect(() => {
 		const lenis = new Lenis();
 
-		lenis.on("scroll", (e) => {
+		lenis.on("scroll", (e: any) => {
 			console.log(e);
 		});
 
-		function raf(time) {
+		function raf(time: any) {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
 		}
 
 		requestAnimationFrame(raf);
 	}, []);
+
 	return (
 		<main ref={container} className="mt-[50vh] mb-[100vh]">
 			{projects.map((project, idx) => {
@@ -46,4 +45,6 @@ export default function Home() {
 			})}
 		</main>
 	);
-}
+};
+
+export default Home;

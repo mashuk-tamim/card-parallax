@@ -19,7 +19,6 @@ const page: React.FC<pageProps> = ({
 	title,
 	description,
 	src,
-	link,
 	color,
 	idx,
 	range,
@@ -51,7 +50,7 @@ const page: React.FC<pageProps> = ({
 					{title}
 				</h1>
 				<div className="flex items-center justify-between px-10 py-10">
-					<p className=" text-black text-sm w-[40%] pl-10">
+					<p className=" text-black text-sm w-[40%] pr-5">
 						{description}
 					</p>
 					<div className=" w-[60%] flex justify-end overflow-hidden  rounded-2xl">
