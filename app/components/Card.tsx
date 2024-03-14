@@ -1,28 +1,29 @@
 "use client";
+import React from 'react';
 import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 type pageProps = {
-	title: string,
-	description: string,
-	src: string,
-	color: string,
-	idx: number,
-	targetScale: number,
-	progress: import("framer-motion").MotionValue<number>,
-	range: number[],
-}
+	idx: number;
+	title: string;
+	description: string;
+	src: string;
+	color: string;
+	targetScale: number;
+	progress: import("framer-motion").MotionValue<number>;
+	range: number[];
+};
 
-const Page = ({
+const Card = ({
+	idx,
 	title,
 	description,
 	src,
 	color,
-	idx,
-    targetScale,
-    progress,
 	range,
+	targetScale,
+	progress,
 }: pageProps) => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
@@ -38,8 +39,8 @@ const Page = ({
 			ref={container}
 		>
 			<motion.div
-                style={{
-                    scale: scale,
+				style={{
+					scale: scale,
 					backgroundColor: color,
 					top: `calc(-10% + ${idx * 25}px)`,
 				}}
@@ -75,4 +76,4 @@ const Page = ({
 	);
 };
 
-export default Page;
+export default Card;

@@ -1,10 +1,19 @@
 "use client";
 import { projects } from "@/app/components/data";
-import Card from "@/app/components/Card/page";
-import { useScroll } from "framer-motion";
+import { MotionValue, useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
+import Card from "./components/Card";
 
+// Define types for title, description, src, and color
+type Project = {
+  title: string;
+  description: string;
+  src: string;
+  color: string;
+};
+// // Assuming projects is an array of Project objects
+// type ProjectsArray = Project[];
 const Home = () => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
@@ -26,9 +35,10 @@ const Home = () => {
 	return (
 		<main ref={container} className="mt-[50vh] mb-[100vh]">
 			{projects.map((project, idx) => {
-                const targetScale = 1 - (projectLength - idx) * 0.05;
+                const targetScale:number = 1 - (projectLength - idx) * 0.05;
                 // console.log({ ...project });
-                const { title, description, src, color } = project;
+                const { title, description, src, color }: Project = project;
+                console.log(title, typeof title);
 				return (
 					<Card
 						key={idx}
@@ -37,7 +47,7 @@ const Home = () => {
                         description={description}
                         src={src}
                         color={color}
-						range={[0, 1]}
+						range={[idx*0.25, 1]}
 						targetScale={targetScale}
 						progress={scrollYProgress}
 					></Card>
