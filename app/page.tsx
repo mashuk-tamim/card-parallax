@@ -26,12 +26,17 @@ const Home = () => {
 	return (
 		<main ref={container} className="mt-[50vh] mb-[100vh]">
 			{projects.map((project, idx) => {
-				const targetScale = 1 - (projectLength - idx) * 0.05;
+                const targetScale = 1 - (projectLength - idx) * 0.05;
+                // console.log({ ...project });
+                const { title, description, src, color } = project;
 				return (
 					<Card
 						key={idx}
 						idx={idx}
-						{...project}
+                        title={title}
+                        description={description}
+                        src={src}
+                        color={color}
 						range={[0, 1]}
 						targetScale={targetScale}
 						progress={scrollYProgress}

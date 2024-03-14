@@ -4,15 +4,14 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 type pageProps = {
-	title: string;
-	description: string;
-	src: string;
-	link: string;
-	color: string;
-	idx: number;
-	targetScale: number;
-	progress: import("framer-motion").MotionValue<number>;
-	range: number[];
+	title: string,
+	description: string,
+	src: string,
+	color: string,
+	idx: number,
+	targetScale: number,
+	progress: import("framer-motion").MotionValue<number>,
+	range: number[],
 }
 
 const Page = ({
@@ -21,9 +20,9 @@ const Page = ({
 	src,
 	color,
 	idx,
-	range,
     targetScale,
-    progress
+    progress,
+	range,
 }: pageProps) => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
