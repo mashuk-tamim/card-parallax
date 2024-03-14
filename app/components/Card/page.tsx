@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
-interface pageProps {
+type pageProps = {
 	title: string;
 	description: string;
 	src: string;
@@ -15,7 +15,7 @@ interface pageProps {
 	range: number[];
 }
 
-const page: React.FC<pageProps> = ({
+const Page = ({
 	title,
 	description,
 	src,
@@ -24,7 +24,7 @@ const page: React.FC<pageProps> = ({
 	range,
     targetScale,
     progress
-}) => {
+}: pageProps) => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: container,
@@ -76,4 +76,4 @@ const page: React.FC<pageProps> = ({
 	);
 };
 
-export default page;
+export default Page;
